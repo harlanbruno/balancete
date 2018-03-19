@@ -1,0 +1,8 @@
+management:
+    endpoints:
+        web:
+            base-path: /management
+   
+server:
+    servlet:
+        context-path: /balancete
