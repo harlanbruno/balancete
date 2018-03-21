@@ -9,7 +9,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Wildcard;
+
 import br.org.balancete.business.CSVImporter;
+import br.org.balancete.business.CSVWriter;
+import br.org.balancete.business.OFXImporter;
 import br.org.balancete.domain.Transaction;
 
 // @SpringBootApplication
@@ -24,7 +28,7 @@ public class BalanceteApplication {
 					.map(Path::toFile)
 					.collect(Collectors.toList());
 
-			CSVImporter ofxImporter = new CSVImporter();
+			OFXImporter ofxImporter = new OFXImporter();
 			Collection<Transaction> transactions = ofxImporter.doImport(files);
 			System.out.println(transactions.size());
 			for (Transaction transaction : transactions) {
@@ -36,6 +40,8 @@ public class BalanceteApplication {
 				System.out.println("detalhe: " + transaction.getDetail());
 				System.out.println("");
 			}
+			CSVWriter writer = new CSVWriter();
+			writer.write(transactions);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

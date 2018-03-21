@@ -59,7 +59,7 @@ public class CSVImporter {
 							rowIndex--;
 							break;
 						}
-						detail.append(row.getCell(1).getStringCellValue());
+						detail.append(getDescription(row.getCell(1)));
 						detail.append(StringUtils.SPACE);
 					}
 					transaction.setDetail(detail.toString());

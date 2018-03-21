@@ -15,4 +15,8 @@ public class DateUtil {
 	public static LocalDateTime convertToLocalDateTime(Date date) {
 		return new Timestamp(date.getTime()).toLocalDateTime();
 	}
+
+	public static Date convertToDate(LocalDateTime date) {
+		return Timestamp.valueOf(date);
+	}
 }
