@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author harlan bruno
  * @since 19/03/2018
@@ -20,6 +22,15 @@ public class Transaction implements Serializable {
 	private String detail;
 	private TransactionEn type;
 	private BigDecimal amount;
+
+	public Transaction() {
+		this.id = null;
+		this.date = null;
+		this.description = StringUtils.EMPTY;
+		this.detail = StringUtils.EMPTY;
+		this.type = null;
+		this.amount = null;
+	}
 
 	@Override
 	public int hashCode() {
