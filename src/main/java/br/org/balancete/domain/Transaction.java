@@ -22,6 +22,7 @@ public class Transaction implements Serializable {
 	private String detail;
 	private TransactionEn type;
 	private BigDecimal amount;
+	private String category;
 
 	public Transaction() {
 		this.id = null;
@@ -72,6 +73,8 @@ public class Transaction implements Serializable {
 		builder.append(type.getValue());
 		builder.append(", amount=");
 		builder.append(amount);
+		builder.append(", category=");
+		builder.append(category);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -122,6 +125,14 @@ public class Transaction implements Serializable {
 
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 }

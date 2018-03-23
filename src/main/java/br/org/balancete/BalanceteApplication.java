@@ -9,11 +9,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.Wildcard;
-
-import br.org.balancete.business.CSVImporter;
 import br.org.balancete.business.CSVWriter;
-import br.org.balancete.business.OFXImporter;
+import br.org.balancete.business.reader.impl.CSVReader;
 import br.org.balancete.domain.Transaction;
 
 // @SpringBootApplication
@@ -24,12 +21,10 @@ public class BalanceteApplication {
 
 		try {
 			List<File> files = Files.walk(Paths.get("C:\\Users\\HarlanBrunoLaurindod\\Desktop\\files"))
-					.filter(Files::isRegularFile)
-					.map(Path::toFile)
-					.collect(Collectors.toList());
+					.filter(Files::isRegularFile).map(Path::toFile).collect(Collectors.toList());
 
-			OFXImporter ofxImporter = new OFXImporter();
-			Collection<Transaction> transactions = ofxImporter.doImport(files);
+			CSVReader reader = new CSVReader();
+			Collection<Transaction> transactions = reader.read(files);
 			System.out.println(transactions.size());
 			for (Transaction transaction : transactions) {
 				System.out.println("tipo: " + transaction.getType().getValue());
