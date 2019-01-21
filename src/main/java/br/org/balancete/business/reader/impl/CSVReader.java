@@ -55,9 +55,9 @@ public class CSVReader implements FileReader<Transaction> {
 
 		if (!isCellEmpty(row.getCell(0))) {
 			transaction.setDate(getDate(row.getCell(0)));
-			transaction.setDescription(getDescription(row.getCell(1)));
-			transaction.setType(getType(row.getCell(2)));
-			transaction.setAmount(getAmout(row.getCell(2)));
+			transaction.setDescription(getDescription(row.getCell(2)));
+			transaction.setType(getType(row.getCell(3)));
+			transaction.setAmount(getAmout(row.getCell(3)));
 		} else {
 			StringBuilder detail = new StringBuilder(transaction.getDetail());
 			detail.append(getDescription(row.getCell(1)));

@@ -2,6 +2,7 @@ package br.org.balancete;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,7 +21,10 @@ public class BalanceteApplication {
 		// SpringApplication.run(BalanceteApplication.class, args);
 
 		try {
-			List<File> files = Files.walk(Paths.get("C:\\Users\\HarlanBrunoLaurindod\\Desktop\\files"))
+			String path = System.getProperty("user.dir") + File.separator + "planilhas";
+			System.out.println(path);
+			// List<File> files = Files.walk(Paths.get("C:\\Users\\Zupper\\Desktop\\files"))
+			List<File> files = Files.walk(Paths.get(path))
 					.filter(Files::isRegularFile).map(Path::toFile).collect(Collectors.toList());
 
 			CSVReader reader = new CSVReader();

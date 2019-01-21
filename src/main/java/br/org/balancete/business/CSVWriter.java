@@ -1,9 +1,16 @@
 package br.org.balancete.business;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.FileAttribute;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.Collection;
+import java.util.Set;
 
 import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -17,7 +24,6 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.wp.usermodel.HeaderFooterType;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import br.org.balancete.domain.Transaction;
@@ -160,7 +166,7 @@ public class CSVWriter {
 		}
 
 		// Write the output to a file
-		FileOutputStream fileOut = new FileOutputStream("poi-generated-file.xlsx");
+		FileOutputStream fileOut = new FileOutputStream("output.xlsx");
 		workbook.write(fileOut);
 		fileOut.close();
 
